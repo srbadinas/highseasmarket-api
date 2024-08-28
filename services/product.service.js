@@ -26,9 +26,8 @@ export const getSingle = async (id) => {
 
 export const store = async (data) => {
     const { name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock } = data;
-    const product = await query('INSERT INTO products (name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *', [name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock]);
-    console.log(product);
-    return true;
+    const [product] = await query('INSERT INTO products (name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *', [name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock]);
+    return product;
 }
 
 export const update = async (data) => {
@@ -57,6 +56,6 @@ export const getExistingImages = async (product_id, image_url) => {
 
 export const addImage = async (data) => {
     const { product_id, image_url, is_active } = data;
-    const image = await query('INSERT INTO product_images (product_id, image_url, is_active) VALUES ($1,$2,$3) RETURNING *', [product_id, image_url, is_active]);
-    return true;
+    const [image] = await query('INSERT INTO product_images (product_id, image_url, is_active) VALUES ($1,$2,$3) RETURNING *', [product_id, image_url, is_active]);
+    return image;
 }
