@@ -31,8 +31,8 @@ export const store = async (data) => {
 }
 
 export const update = async (data) => {
-    const { id, name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock } = data;
-    const [product] = await query('UPDATE products SET name = $1, description = $2, slug = $3, product_category_id = $4, unit_id = $5, is_published = $6, last_updated_by_user_id = $7, price = $8, stock = $9 WHERE id = $10', [name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock, id]);
+    const { id, name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock, is_custom_unit, custom_unit } = data;
+    const [product] = await query(`UPDATE products SET name = $1, description = $2, slug = $3, product_category_id = $4, unit_id = $5, is_published = $6, last_updated_by_user_id = $7, price = $8, stock = $9, is_custom_unit = $10, custom_unit = $11, last_updated_date = NOW() AT TIME ZONE 'UTC' WHERE id = $12`, [name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock, is_custom_unit, custom_unit, id]);
 
     return product;
 }
