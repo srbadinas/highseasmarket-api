@@ -57,6 +57,6 @@ export const getExistingImages = async (product_id, image_url) => {
 
 export const addImage = async (data) => {
     const { product_id, image_url, is_active } = data;
-    const [image] = await query('INSERT INTO product_images (product_id, image_url, is_active) VALUES ($1,$2,$3) RETURNING *', [product_id, image_url, is_active]);
-    return image;
+    const image = await query('INSERT INTO product_images (product_id, image_url, is_active) VALUES ($1,$2,$3) RETURNING *', [product_id, image_url, is_active]);
+    return true;
 }
