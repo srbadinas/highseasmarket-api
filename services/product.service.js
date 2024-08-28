@@ -25,8 +25,8 @@ export const getSingle = async (id) => {
 }
 
 export const store = async (data) => {
-    const { name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock } = data;
-    const [product] = await query('INSERT INTO products (name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9) RETURNING *', [name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock]);
+    const { name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock, is_custom_unit, custom_unit } = data;
+    const [product] = await query('INSERT INTO products (name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock, is_custom_unit, custom_unit) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11) RETURNING *', [name, description, product_category_id, unit_id, is_published, created_by_user_id, slug, price, stock, is_custom_unit, custom_unit]);
     return product;
 }
 

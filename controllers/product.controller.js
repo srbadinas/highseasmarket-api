@@ -20,8 +20,8 @@ export const getProduct = async (req, res) => {
 }
 
 export const addProduct = async (req, res) => {
-    const { name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock, images } = req.body;
-    const product = await store({ name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock });
+    const { name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock, is_custom_unit, custom_unit, images } = req.body;
+    const product = await store({ name, description, slug, product_category_id, unit_id, is_published, created_by_user_id, price, stock, is_custom_unit, custom_unit });
 
     if (images) {
         images.map(async (item, i) => {
@@ -34,8 +34,8 @@ export const addProduct = async (req, res) => {
 
 export const updateProduct = async (req, res) => {
     const { id } = req.params;
-    const { name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock } = req.body;
-    const product = await update({ id, name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock });
+    const { name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock, is_custom_unit, custom_unit } = req.body;
+    const product = await update({ id, name, description, slug, product_category_id, unit_id, is_published, last_updated_by_user_id, price, stock, is_custom_unit, custom_unit });
     res.status(200).send({ data: product });
 }
 
