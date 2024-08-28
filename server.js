@@ -3,7 +3,7 @@ import cors from 'cors';
 import bcrypt from 'bcryptjs';
 import { query } from './db.js';
 import routes from './routes/index.js';
-import { verifyJwt } from "./utils/jwt.js";
+import { signJwtAccessToken, verifyJwt } from "./utils/jwt.js";
 import verifyToken from "./utils/verifyToken.js";
 
 const app = express();
