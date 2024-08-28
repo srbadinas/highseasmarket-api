@@ -16,7 +16,7 @@ export const getCount = async (user_id) => {
 }
 
 export const getAll = async () => {
-    return await query('SELECT id, name, price, is_published, created_date, last_updated_date as count FROM products ORDER BY created_date DESC');
+    return await query('SELECT id, name, price, is_published, created_date, last_updated_date FROM products ORDER BY created_date DESC');
 }
 
 export const getSingle = async (id) => {
