@@ -11,7 +11,7 @@ const port = 3001;
 
 // Configure CORS
 const corsOptions = {
-    origin: 'https://highseasmarket.vercel.app',
+    origin: 'https://www.highseasmarkets.com',
     methods: 'GET,POST,PUT,DELETE',
     allowedHeaders: 'Content-Type,Authorization',
 };
